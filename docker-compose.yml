@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  web:
+    container_name: orn_web
+    build: .
+    command: mix phx.server  
+    volumes:
+      - .:/web:cached
+    ports:
+      - "4000:4000"
