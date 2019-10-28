@@ -8,3 +8,22 @@ services:
       - .:/web:cached
     ports:
       - "4000:4000"
+    links:
+      - db
+    depends_on:
+      - db
+
+  db:
+    container_name: orn_db
+    image: postgres:12
+    ports:
+      - 5444:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - .:/web:cached
+      - orn_db:/var/lib/postgresql/data:cached
+
+volumes:
+  orn_db: null
