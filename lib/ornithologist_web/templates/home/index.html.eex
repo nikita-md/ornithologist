@@ -1,0 +1,9 @@
+<h2>Current tasks</h2>
+
+<ul class="collection" >
+  <%= for task <- @tasks do %>
+  <li class="collection-item">
+    <%= task.priority %> | <%= task.description %>
+  </li>
+  <%end%>
+</ul>
