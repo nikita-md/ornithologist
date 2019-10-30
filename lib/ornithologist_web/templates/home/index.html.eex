@@ -3,7 +3,7 @@
 <ul class="collection" >
   <%= for task <- @tasks do %>
   <li class="collection-item">
-    <%= task.priority %> | <%= task.description %>
+    <%= task.name %> | <%= task.description %> | <%= task.priority %>
   </li>
   <%end%>
 </ul>
