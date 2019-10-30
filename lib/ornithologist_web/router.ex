@@ -17,6 +17,8 @@ defmodule OrnithologistWeb.Router do
     pipe_through :browser
 
     get "/", HomeController, :index
+    get "/new", TaskController, :new
+    post "/", TaskController, :create
   end
 
   # Other scopes may use custom stacks.
