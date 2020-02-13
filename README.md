@@ -1,15 +1,19 @@
 # Ornithologist
 
-To start your Phoenix server:
+To start:
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+  * `docker build`
+  * `docker-compose run --rm web mix deps.get`
+  * `docker-compose run --rm web mix ecto.setup`
+  * `docker-compose run --rm web bash -c 'cd assets && npm install'`
+  * `docker-compose up`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+To debug:
+  * Put `require IEx;IEx.pry`
+  * Run it against the same web container `docker exec -it CONTAINER_ID bash -c 'PORT=4001 iex -S mix phx.server'`
+  * Run code where you placed pry
 
 ## Learn more
 

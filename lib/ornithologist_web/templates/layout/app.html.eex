@@ -11,7 +11,7 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Ornithologist</a>
+        <a href="<%= Routes.task_path(@conn, :index) %>" class="brand-logo">Ornithologist</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="<%= Routes.task_path(@conn, :new) %>">Create new task</a></li>
         </ul>

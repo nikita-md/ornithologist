@@ -3,11 +3,14 @@ services:
   web:
     container_name: orn_web
     build: .
-    command: mix phx.server  
+    command: mix phx.server
+    stdin_open: true
+    tty: true
     volumes:
       - .:/web:cached
     ports:
-      - "4000:4000"
+      - 4000:4000
+      - 4001:4001
     links:
       - db
     depends_on:
