@@ -4,7 +4,8 @@ defmodule OrnithologistWeb.TaskController do
   alias Ornithologist.{Repo, Task}
 
   def index(conn, _params) do
-    tasks = Repo.all(Task)
+    import Ecto.Query
+    tasks = Repo.all(from t in Task, order_by: [desc: t.updated_at])
     render(conn, "index.html", tasks: tasks)
   end
 
@@ -28,5 +29,29 @@ defmodule OrnithologistWeb.TaskController do
     conn
     |> put_flash(:info, "task deleted")
     |> redirect(to: Routes.task_path(conn, :index))
+  end
+
+  def edit(conn, %{"id" => id}) do
+    case Repo.get(Task, id) do
+      nil -> conn
+        |> put_flash(:error, "task doesn't exist")
+        |> redirect(to: Routes.task_path(conn, :index))
+      task -> conn
+        |> render("edit.html", changeset: Task.changeset(task), task: task)
+    end
+  end
+
+  def update(conn, %{"id" => id, "task" => task}) do
+    old_task = Repo.get(Task, id)
+    Task.changeset(old_task, task)
+    |> Repo.update
+    |> case do
+      {:ok, _task} -> conn
+        |> put_flash(:info, "task successfully updated")
+        |> redirect(to: Routes.task_path(conn, :index))
+      {:error, changeset} -> conn
+        |> put_flash(:error, for({attr, message} <- changeset.errors, do: "#{attr} #{elem(message, 0)}"))
+        |> render("edit.html", changeset: changeset, task: old_task)
+    end
   end
 end

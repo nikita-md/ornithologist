@@ -4,6 +4,7 @@
   <%= for task <- @tasks do %>
   <li class="collection-item">
     <%= task.name %> | <%= task.description %> | <%= task.priority %>
+    <%= link "Edit", to: Routes.task_path(@conn, :edit, task) %>
     <%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete %>
   </li>
   <%end%>
