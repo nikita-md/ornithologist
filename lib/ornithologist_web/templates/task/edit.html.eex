@@ -1,13 +1,19 @@
 <h2>Update tasks</h2>
 
 <%= form_for @changeset, Routes.task_path(@conn, :update, @task), fn f -> %>
-  <%= text_input f, :name, placeholder: @task.name, class: "form-control" %>
-  <%= error_tag f, :name %>
-  
-  <%= text_input f, :priority, placeholder: @task.priority, class: "form-control" %>
-  
-  <%= textarea f, :description, placeholder: "#{String.slice(@task.description, 0..15)} ...", class: "form-control" %>
-  <%= error_tag f, :description %>
+  <div class="row">
+    <%= text_input f, :name, placeholder: @task.name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="row">
+    <%= select f, :priority, Ornithologist.Task.Priority.map, class: "form-control", style: "display:inline" %>
+  </div>
+
+  <div class="row">
+    <%= textarea f, :description, placeholder: "#{String.slice(@task.description, 0..15)} ...", class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
   
   <%= submit "Update", class: "btn btn-primary green" %>
 <% end %>

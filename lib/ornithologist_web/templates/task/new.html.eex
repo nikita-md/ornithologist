@@ -1,13 +1,18 @@
 <h2>New tasks</h2>
 
 <%= form_for @changeset, Routes.task_path(@conn, :create), fn f -> %>
-  <%= text_input f, :name, placeholder: "unique task name", class: "form-control" %>
-  <%= error_tag f, :name %>
+  <div class="row">
+    <%= text_input f, :name, placeholder: "unique task name", class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
   
-  <%= text_input f, :priority, placeholder: "priority", class: "form-control" %>
-  
-  <%= textarea f, :description, placeholder: "description ...", class: "form-control" %>
-  <%= error_tag f, :description %>
-  
+  <div class="row">
+    <%= select f, :priority, Ornithologist.Task.Priority.map, prompt: "choose priority", class: "form-control", style: "display:inline" %>
+  </div>
+
+  <div class="row">
+    <%= textarea f, :description, placeholder: "description ...", class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
   <%= submit "Create", class: "btn btn-primary green" %>
 <% end %>
