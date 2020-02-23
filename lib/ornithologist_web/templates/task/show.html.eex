@@ -1,0 +1,27 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input disabled value="<%= @task.name %>" id="disabled" type="text" class="validate">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input disabled value="<%= @task.description %>" id="disabled" type="text" class="validate">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input disabled value="<%= @task.priority %>" id="disabled" type="text" class="validate">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= link "Edit", to: Routes.task_path(@conn, :edit, @task), class: "btn waves-effect waves-light" %>
+      </div>
+      <div class="input-field col s6">
+        <%= link "Delete", to: Routes.task_path(@conn, :delete, @task), method: :delete, class: "btn waves-effect waves-light red" %>
+      </div>
+    </div>
+  </form>
+</div>

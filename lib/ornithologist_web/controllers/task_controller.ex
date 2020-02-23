@@ -13,6 +13,16 @@ defmodule OrnithologistWeb.TaskController do
     render(conn, "new.html", changeset: Task.changeset(%Task{}))
   end
 
+  def show(conn, %{"id" => id}) do
+    case Repo.get(Task, id) do
+      nil -> conn
+        |> put_flash(:error, "task doesn't exist")
+        |> redirect(to: Routes.task_path(conn, :index))
+      task -> conn
+        |> render("show.html", task: task)
+    end
+  end
+
   def create(conn, %{"task" => task}) do
     case Repo.insert(Task.changeset(%Task{}, task)) do
       {:ok, _task} -> conn
