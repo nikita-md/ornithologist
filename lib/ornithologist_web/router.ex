@@ -13,10 +13,16 @@ defmodule OrnithologistWeb.Router do
     plug :accepts, ["json"]
   end
 
+  if Mix.env == :dev do
+    forward "/sent_emails", Bamboo.SentEmailViewerPlug
+  end
+
   scope "/", OrnithologistWeb do
     pipe_through :browser
 
     get "/", TaskController, :index
+
+    delete "/tasks/delete_all", TaskController, :delete_all
     resources "tasks", TaskController
   end
 

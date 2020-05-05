@@ -1,21 +1,27 @@
 <h2>Tasks</h2>
-<table class="highlight">
-  <thead>
-    <tr>
-      <th>Summary</th>
-      <th>Description</th>
-      <th>Priority</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for task <- @tasks do %>
+<%= if length(@tasks) > 0 do %>
+  <table class="highlight">
+    <thead>
       <tr>
-        <td><%= task.name %></td>
-        <td><%= "#{String.slice(task.description, 0..15)} ..." %></td>
-        <td><%= Ornithologist.Task.Priority.humanize(task.priority) %></td>
-        <td><%= link "Show", to: Routes.task_path(@conn, :show, task) %></td>
-        <td><%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete %></td>
+        <th>Summary</th>
+        <th>Description</th>
+        <th>Priority</th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%= for task <- @tasks do %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= "#{String.slice(task.description, 0..15)} ..." %></td>
+          <td><%= Ornithologist.Task.Priority.humanize(task.priority) %></td>
+          <td><%= link "Show", to: Routes.task_path(@conn, :show, task) %></td>
+          <td><%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div>
+    <h1> There are no tasks ...</h1>
+  </div>
+<% end %>

@@ -6,6 +6,9 @@ config :ornithologist, OrnithologistWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+config :ornithologist, Ornithologist.Mailer,
+       adapter: Bamboo.TestAdapter
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 
@@ -14,5 +17,5 @@ config :ornithologist, Ornithologist.Repo,
   username: "postgres",
   password: "postgres",
   database: "ornithologist_test",
-  hostname: "localhost",
+  hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox

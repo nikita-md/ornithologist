@@ -12,5 +12,5 @@
 
 alias Ornithologist.{Repo, Task}
 
-Ornithologist.Repo.insert!(%Task{description: "Feed a cat", priority: 100})
-Ornithologist.Repo.insert!(%Task{description: "Clean the room"})
+Repo.insert!(%Task{description: "Feed a cat"})
+Repo.insert!(%Task{description: "Clean the room"})

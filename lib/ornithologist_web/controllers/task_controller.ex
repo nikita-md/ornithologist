@@ -1,7 +1,7 @@
 defmodule OrnithologistWeb.TaskController do
   use OrnithologistWeb, :controller
 
-  alias Ornithologist.{Repo, Task}
+  alias Ornithologist.{Repo, Task, Email}
 
   def index(conn, _params) do
     import Ecto.Query
@@ -37,7 +37,15 @@ defmodule OrnithologistWeb.TaskController do
   def delete(conn, %{"id" => id}) do
     Repo.get(Task, id) |> Repo.delete
     conn
-    |> put_flash(:info, "task deleted")
+    |> put_flash(:info, "task is deleted")
+    |> redirect(to: Routes.task_path(conn, :index))
+  end
+
+  def delete_all(conn, _params) do
+    Repo.delete_all(Task)
+    Email.tasks_deleted("nikitanaryshev@gmail.com") |> Ornithologist.Mailer.deliver_later
+    conn
+    |> put_flash(:info, "all tasks are deleted")
     |> redirect(to: Routes.task_path(conn, :index))
   end
 

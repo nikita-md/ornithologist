@@ -17,6 +17,14 @@ config :ornithologist, OrnithologistWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :ornithologist, Ornithologist.Mailer,
+  adapter: Bamboo.SMTPAdapter
+  # server: "mailcatcher",
+  # port: 1025,
+  # tls: :if_available, # can be `:always` or `:never`
+  # ssl: false, # can be `true`
+  # retries: 1
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
