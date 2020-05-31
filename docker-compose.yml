@@ -29,5 +29,14 @@ services:
       - .:/web:cached
       - orn_db:/var/lib/postgresql/data:cached
 
+  redis:
+    container_name: orn_redis
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
 volumes:
   orn_db: null
+  redis-data: null

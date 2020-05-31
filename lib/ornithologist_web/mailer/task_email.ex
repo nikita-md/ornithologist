@@ -11,6 +11,6 @@ defmodule OrnithologistWeb.Email do
     |> subject("All tasks are deleted")
     |> put_html_layout({OrnithologistWeb.LayoutView, "email.html"})
     |> render("delete_all.html", email_address: from)
-    |> Mailer.deliver_later
+    |> Mailer.deliver_now
   end
 end

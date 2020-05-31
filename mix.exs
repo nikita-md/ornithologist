@@ -44,7 +44,9 @@ defmodule Ornithologist.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:bamboo, "~> 1.4"},
-      {:bamboo_smtp, "~> 2.1"}
+      {:bamboo_smtp, "~> 2.1"},
+      {:exq, "~> 0.13.5"},
+      {:exq_ui, "~> 0.11.0"}
     ]
   end
 

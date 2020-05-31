@@ -19,3 +19,6 @@ config :ornithologist, Ornithologist.Repo,
   database: "ornithologist_test",
   hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :exq,
+  queue_adapter: Exq.Adapters.Queue.Mock

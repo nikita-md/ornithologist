@@ -22,6 +22,23 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :exq,
+  name: Exq,
+  host: "redis",
+  port: 6379,
+  namespace: "exq",
+  concurrency: 500,
+  queues: ["default"]
+  # poll_timeout: 50,
+  # scheduler_poll_timeout: 200,
+  # scheduler_enable: true,
+  # max_retries: 25,
+  # mode: :default,
+  # shutdown_timeout: 5000
+
+config :exq_ui,
+  server: true
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
