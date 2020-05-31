@@ -74,5 +74,5 @@ config :ornithologist, Ornithologist.Repo,
   hostname: "db",
   pool_size: 10
 
-config :ornithologist, Ornithologist.Mailer,
+config :ornithologist, OrnithologistWeb.Mailer,
   adapter: Bamboo.LocalAdapter

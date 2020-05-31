@@ -2,7 +2,7 @@ defmodule OrnithologistWeb.EmailTest do
   use ExUnit.Case
   use Bamboo.Test
 
-  alias Ornithologist.{Email}
+  alias OrnithologistWeb.Email
 
   setup do
     %{
@@ -13,9 +13,10 @@ defmodule OrnithologistWeb.EmailTest do
   end
 
   test "tasks_deleted", ctx do
-    email = Email.tasks_deleted(ctx.to_email)
-    assert email.from == ctx.from_email
-    assert email.to == ctx.to_email
+    email = Email.all_tasks_deleted(ctx.to_email)
+    IO.inspect(email)
+    assert email.from == {nil, ctx.from_email}
+    assert email.to == [{nil, ctx.to_email}]
     assert email.subject == ctx.subject
   end
 end

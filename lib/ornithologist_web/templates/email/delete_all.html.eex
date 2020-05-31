@@ -1,0 +1,6 @@
+<p>
+  <strong>All tasks<strong> are deleted!
+</p>
+<p>
+  Email from <%= @email_address %>
+</p>

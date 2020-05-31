@@ -6,7 +6,7 @@ config :ornithologist, OrnithologistWeb.Endpoint,
   http: [port: 4002],
   server: false
 
-config :ornithologist, Ornithologist.Mailer,
+config :ornithologist, OrnithologistWeb.Mailer,
        adapter: Bamboo.TestAdapter
 
 # Print only warnings and errors during test

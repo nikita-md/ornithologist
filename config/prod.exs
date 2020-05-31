@@ -17,7 +17,7 @@ config :ornithologist, OrnithologistWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :ornithologist, Ornithologist.Mailer,
+config :ornithologist, OrnithologistWeb.Mailer,
   adapter: Bamboo.SMTPAdapter
   # server: "mailcatcher",
   # port: 1025,
