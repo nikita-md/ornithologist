@@ -68,10 +68,11 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :ornithologist, Ornithologist.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "ornithologist_dev",
-  hostname: "db",
+  username: System.get_env("POSTGRES_USER"),
+  password: System.get_env("POSTGRES_PASSWORD"),
+  database: System.get_env("POSTGRES_DB"),
+  hostname: System.get_env("POSTGRES_HOST"),
+  port: System.get_env("POSTGRES_PORT"),
   pool_size: 10
 
 config :ornithologist, OrnithologistWeb.Mailer,
