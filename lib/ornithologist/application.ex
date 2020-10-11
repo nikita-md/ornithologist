@@ -10,6 +10,8 @@ defmodule Ornithologist.Application do
     children = [
       # Start the Ecto repository
       Ornithologist.Repo,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Ornithologist.PubSub},
       # Start the endpoint when the application starts
       OrnithologistWeb.Endpoint
       # Starts a worker by calling: Ornithologist.Worker.start_link(arg)

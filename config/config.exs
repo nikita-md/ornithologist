@@ -13,9 +13,9 @@ config :ornithologist,
 # Configures the endpoint
 config :ornithologist, OrnithologistWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "lsKZo5D2X0ZQxt3c2i1FsI4Cfj7RSJksGHxyMCou2H7zl25POghS2HjVLLnarEB1",
+  secret_key_base: System.get_env("SECRET_KEY"),
   render_errors: [view: OrnithologistWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Ornithologist.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: Ornithologist.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,8 +24,8 @@ config :logger, :console,
 
 config :exq,
   name: Exq,
-  host: "redis",
-  port: 6379,
+  host: System.get_env("REDIS_HOST"),
+  port: System.get_env("REDIS_PORT"),
   namespace: "exq",
   concurrency: 500,
   queues: ["default"]

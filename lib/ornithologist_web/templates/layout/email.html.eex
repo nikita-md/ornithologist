@@ -6,7 +6,7 @@
   </head>
   <body>
     <p>Greetings!</p>
-    <%= render @view_module, @view_template, assigns %>
+    <%= @inner_content %>
     <p>- The Ornithologist Team.</p>
   </body>
 </html>

@@ -2,7 +2,7 @@
 
 To start:
 
-  * `docker build`
+  * `docker build .`
   * `docker-compose run --rm web mix deps.get`
   * `docker-compose run --rm web mix ecto.setup`
   * `docker-compose run --rm web bash -c 'cd assets && npm install'`
