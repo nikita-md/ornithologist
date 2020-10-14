@@ -20,7 +20,7 @@ services:
 
   db:
     container_name: orn_db
-    image: postgres:12
+    image: postgres:12-alpine
     ports:
       - 5444:5432
     environment:
@@ -32,7 +32,7 @@ services:
 
   redis:
     container_name: orn_redis
-    image: redis
+    image: redis:6-alpine
     ports:
       - 6380:6379
     volumes:

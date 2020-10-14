@@ -23,6 +23,7 @@ defmodule OrnithologistWeb do
 
       import Plug.Conn
       import OrnithologistWeb.Gettext
+      import Phoenix.LiveView.Controller
       alias OrnithologistWeb.Router.Helpers, as: Routes
     end
   end
@@ -41,6 +42,7 @@ defmodule OrnithologistWeb do
 
       import OrnithologistWeb.ErrorHelpers
       import OrnithologistWeb.Gettext
+      import Phoenix.LiveView.Helpers
       alias OrnithologistWeb.Router.Helpers, as: Routes
     end
   end
@@ -49,6 +51,7 @@ defmodule OrnithologistWeb do
     quote do
       use Phoenix.Router
       import Plug.Conn
+      import Phoenix.LiveView.Router
       import Phoenix.Controller
     end
   end
