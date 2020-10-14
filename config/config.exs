@@ -13,6 +13,7 @@ config :ornithologist,
 # Configures the endpoint
 config :ornithologist, OrnithologistWeb.Endpoint,
   url: [host: "localhost"],
+  live_view: [signing_salt: System.get_env("LIVE_VIEW_SECRET")],
   secret_key_base: System.get_env("SECRET_KEY"),
   render_errors: [view: OrnithologistWeb.ErrorView, accepts: ~w(html json)],
   pubsub_server: Ornithologist.PubSub

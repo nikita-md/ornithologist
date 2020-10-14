@@ -1,10 +1,12 @@
 defmodule OrnithologistWeb.Router do
   use OrnithologistWeb, :router
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
+    plug :put_root_layout, {OrnithologistWeb.LayoutView, :root}
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -33,10 +35,14 @@ defmodule OrnithologistWeb.Router do
   scope "/", OrnithologistWeb do
     pipe_through :browser
 
-    get "/", TaskController, :index
+    if Mix.env() == :dev do
+      live_dashboard "/dashboard"
+    end
 
+    resources "/tasks", TaskController
+
+    get "/", TaskController, :index
     delete "/tasks/delete_all", TaskController, :delete_all
-    resources "tasks", TaskController
   end
 
   # Other scopes may use custom stacks.
