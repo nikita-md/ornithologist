@@ -49,7 +49,8 @@ defmodule Ornithologist.MixProject do
       {:phoenix_live_view, "~> 0.14.7"},
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.1"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev}
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:ecto_enum, "~> 1.4"}
     ]
   end
 
