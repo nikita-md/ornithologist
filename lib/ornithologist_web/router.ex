@@ -40,6 +40,7 @@ defmodule OrnithologistWeb.Router do
     end
 
     resources "/tasks", TaskController
+    resources "/users", UserController
 
     get "/", TaskController, :index
     delete "/tasks/delete_all", TaskController, :delete_all
