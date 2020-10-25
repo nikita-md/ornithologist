@@ -1,6 +1,6 @@
 FROM elixir:1.10-alpine
 
-RUN apk --update --upgrade --no-cache add git build-base postgresql-dev inotify-tools erlang-dev erlang-parsetools ca-certificates nodejs
+RUN apk --update --upgrade --no-cache add git bash build-base postgresql-dev inotify-tools erlang-dev erlang-parsetools ca-certificates nodejs
 
 ENV YARN_VERSION 1.22.5
 ADD https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v${YARN_VERSION}.tar.gz /opt/yarn.tar.gz

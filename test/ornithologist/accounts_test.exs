@@ -6,9 +6,9 @@ defmodule Ornithologist.AccountsTest do
   describe "users" do
     alias Ornithologist.Accounts.User
 
-    @valid_attrs %{encrypted_password: "some encrypted_password", username: "some username"}
-    @update_attrs %{encrypted_password: "some updated encrypted_password", username: "some updated username"}
-    @invalid_attrs %{encrypted_password: nil, username: nil}
+    @valid_attrs %{password: "some password", username: "some username"}
+    @update_attrs %{password: "some updated password", username: "some updated username"}
+    @invalid_attrs %{password: nil, username: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -31,7 +31,7 @@ defmodule Ornithologist.AccountsTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.encrypted_password == "some encrypted_password"
+      assert user.password == "some password"
       assert user.username == "some username"
     end
 
@@ -42,7 +42,7 @@ defmodule Ornithologist.AccountsTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
-      assert user.encrypted_password == "some updated encrypted_password"
+      assert user.password == "some updated password"
       assert user.username == "some updated username"
     end
 
