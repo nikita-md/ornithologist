@@ -13,10 +13,18 @@
       <div class="nav-wrapper">
         <a href="<%= Routes.task_path(@conn, :index) %>" class="brand-logo">Ornithologist</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="<%= Routes.user_path(@conn, :new) %>">Create user</a></li>
-          <li><a href="<%= Routes.user_path(@conn, :index) %>">Users</a></li>
+          <%= if @user_signed_in? do %>
+            <li><a href="<%= Routes.user_path(@conn, :show, @current_user) %>">My profile</a></li>
+            <li><%= link "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+          <% else %>
+            <li><a href="<%= Routes.user_path(@conn, :new) %>">Sign up</a></li>
+            <li><a href="<%= Routes.session_path(@conn, :new) %>">Sign in</a></li>
+          <% end %>
           <li><a href="<%= Routes.task_path(@conn, :new) %>">Create new task</a></li>
-          <li><%= link "Delete all", to: Routes.task_path(@conn, :delete_all), method: :delete %></li>
+          <%= if @user_signed_in? && @current_user.role == :admin do %>
+            <li><a href="<%= Routes.user_path(@conn, :index) %>">Users</a></li>
+            <li><%= link "Delete all", to: Routes.task_path(@conn, :delete_all), method: :delete %></li>
+          <% end %>
         </ul>
       </div>
     </nav>

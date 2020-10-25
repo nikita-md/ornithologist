@@ -1,0 +1,14 @@
+<h2>Sign in</h2>
+
+<%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
+  <div class="row">
+    <%= email_input f, :email, placeholder: "email", class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class="row">
+    <%= password_input f, :password, placeholder: "password", class: "form-control" %>
+    <%= error_tag f, :password %>
+  </div>
+  <%= submit "Sign in", class: "btn btn-primary green" %>
+<% end %>

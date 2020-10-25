@@ -9,6 +9,7 @@ defmodule OrnithologistWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Ornithologist.Plugs.SetCurrentUser
   end
 
   pipeline :api do
@@ -41,6 +42,10 @@ defmodule OrnithologistWeb.Router do
 
     resources "/tasks", TaskController
     resources "/users", UserController
+
+    post "/sign-in", SessionController, :create
+    delete "/sign-out", SessionController, :delete
+    get "/sign-in", SessionController, :new
 
     get "/", TaskController, :index
     delete "/tasks/delete_all", TaskController, :delete_all

@@ -3,9 +3,9 @@ defmodule OrnithologistWeb.UserControllerTest do
 
   alias Ornithologist.Accounts
 
-  @create_attrs %{encrypted_password: "some encrypted_password", username: "some username"}
-  @update_attrs %{encrypted_password: "some updated encrypted_password", username: "some updated username"}
-  @invalid_attrs %{encrypted_password: nil, username: nil}
+  @create_attrs %{password: "some password", username: "some username"}
+  @update_attrs %{password: "some updated password", username: "some updated username"}
+  @invalid_attrs %{password: nil, username: nil}
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)
@@ -60,7 +60,7 @@ defmodule OrnithologistWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.user_path(conn, :show, user)
 
       conn = get(conn, Routes.user_path(conn, :show, user))
-      assert html_response(conn, 200) =~ "some updated encrypted_password"
+      assert html_response(conn, 200) =~ "some updated password"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do

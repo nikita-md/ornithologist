@@ -50,7 +50,8 @@ defmodule Ornithologist.MixProject do
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:ecto_enum, "~> 1.4"}
+      {:ecto_enum, "~> 1.4"},
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 

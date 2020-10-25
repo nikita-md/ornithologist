@@ -13,7 +13,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 To debug:
 
   * Put `require IEx;IEx.pry`
-  * Run it against the same web container `docker exec -it CONTAINER_ID bash -c 'PORT=4001 iex -S mix phx.server'`
+  * Run it against the same web container `docker exec -it $(docker ps -aqf "name=orn_web") bash -c 'PORT=4001 iex -S mix phx.server'`
   * Run code where you placed pry on localhost:4001
 
 To run tests:
